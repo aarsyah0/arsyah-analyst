@@ -5,13 +5,33 @@ import seaborn as sns
 
 # Load data
 df = pd.read_csv('data/df.csv')
-all_data = df.copy()  # Menjaga data tetap sama
+all_data = df.copy()
 
 # Pastikan kolom order_purchase_timestamp adalah datetime
 df['order_purchase_timestamp'] = pd.to_datetime(df['order_purchase_timestamp'], errors='coerce')
 
-# Title for dashboard
-st.title('E-commerce Data Dashboard: Visualization & Explanatory Analysis')
+# Title for dashboard with animated effect
+st.markdown("""
+    <div style="background-color:#00c0f2;padding:10px;border-radius:10px">
+        <h1 style="color:white;text-align:center;font-family:Arial;animation:glow 1.5s ease-in-out infinite alternate;">E-commerce Data Dashboard</h1>
+    </div>
+    <style>
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px white; }
+            100% { text-shadow: 0 0 20px #ff00ff; }
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+# Display profile information
+st.sidebar.markdown(f"""
+    <div style="padding:15px;background-color:#4CAF50;border-radius:10px;color:white">
+        <h2>Profile</h2>
+        <p><strong>Nama:</strong> Sutan Arsyah Nugraha</p>
+        <p><strong>Email:</strong> arsasaja2@gmail.com</p>
+        <p><strong>ID Dicoding:</strong> aarsyah0</p>
+    </div>
+""", unsafe_allow_html=True)
 
 # Sidebar for filtering data
 st.sidebar.header("Filter Data")
